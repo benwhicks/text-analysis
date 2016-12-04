@@ -1,0 +1,275 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     10519,        265]
+NotebookOptionsPosition[     10226,        250]
+NotebookOutlinePosition[     10579,        266]
+CellTagsIndexPosition[     10536,        263]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{
+    RowBox[{
+    "setting", " ", "up", " ", "the", " ", "analyse", " ", "text", " ", 
+     "function"}], " ", "-", " ", 
+    RowBox[{
+    "takes", " ", "in", " ", "a", " ", "corpus", " ", "and", " ", "a", " ", 
+     "name", " ", "and", " ", "returns", " ", "a", " ", "notebook", " ", 
+     "object"}]}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"analyseText", "[", 
+    RowBox[{"corpus_", ",", 
+     RowBox[{"name_:", "\"\<Title\>\""}]}], "]"}], ":=", 
+   RowBox[{"(", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"tCells", ":=", 
+       RowBox[{"{", 
+        RowBox[{"TextCell", "[", 
+         RowBox[{"name", ",", "\"\<Subtitle\>\""}], "]"}], "}"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"tCells", ",", 
+        RowBox[{"TextCell", "[", 
+         RowBox[{
+          RowBox[{"\"\<Number of words: \>\"", "<>", 
+           RowBox[{"ToString", "[", 
+            RowBox[{"WordCount", "[", "corpus", "]"}], "]"}]}], ",", 
+          "\"\<Text\>\""}], "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"words", ":=", 
+       RowBox[{"ToLowerCase", "[", 
+        RowBox[{"StringSplit", "[", 
+         RowBox[{"corpus", ",", " ", 
+          RowBox[{
+           RowBox[{"Except", "[", "WordCharacter", "]"}], ".."}]}], "]"}], 
+        "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"sentences", ":=", 
+       RowBox[{"TextSentences", "[", "corpus", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"tCells", ",", 
+        RowBox[{"TextCell", "[", 
+         RowBox[{
+          RowBox[{"\"\<Number of distinct words: \>\"", "<>", 
+           RowBox[{"ToString", "[", 
+            RowBox[{"CountDistinct", "[", "words", "]"}], "]"}]}], ",", 
+          "\"\<Text\>\""}], "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"tCells", ",", 
+        RowBox[{"TextCell", "[", 
+         RowBox[{
+          RowBox[{"\"\<Vocab density: \>\"", "<>", 
+           RowBox[{"ToString", "[", 
+            RowBox[{"N", "[", 
+             RowBox[{
+              FractionBox[
+               RowBox[{"CountDistinct", "[", "words", "]"}], 
+               RowBox[{"Length", "[", "words", "]"}]], ",", "3"}], "]"}], 
+            "]"}]}], ",", "\"\<Text\>\""}], "]"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"trimmedWords", ":=", 
+       RowBox[{"DeleteStopwords", "[", "words", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"tCells", ",", 
+        RowBox[{"TextCell", "[", 
+         RowBox[{
+          RowBox[{"\"\<Vocab density, without stop words: \>\"", "<>", 
+           RowBox[{"ToString", "[", 
+            RowBox[{"N", "[", 
+             RowBox[{
+              FractionBox[
+               RowBox[{"CountDistinct", "[", "trimmedWords", "]"}], 
+               RowBox[{"Length", "[", "trimmedWords", "]"}]], ",", "3"}], 
+             "]"}], "]"}]}], ",", "\"\<Text\>\""}], "]"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"tCells", ",", 
+        RowBox[{"TextCell", "[", 
+         RowBox[{
+         "\"\<The 20 most commonly used words:\>\"", ",", "\"\<Text\>\""}], 
+         "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"tCells", ",", 
+        RowBox[{"Take", "[", 
+         RowBox[{
+          RowBox[{"WordCounts", "[", 
+           RowBox[{"DeleteStopwords", "[", "corpus", "]"}], "]"}], ",", 
+          "20"}], "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"tCells", ",", 
+        RowBox[{"TextCell", "[", 
+         RowBox[{
+          RowBox[{"\"\<Density of adjectives: \>\"", "<>", 
+           RowBox[{"ToString", "[", 
+            RowBox[{"N", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Length", "[", 
+                RowBox[{"Intersection", "[", 
+                 RowBox[{
+                  RowBox[{"WordList", "[", "\"\<Adjective\>\"", "]"}], ",", 
+                  "trimmedWords"}], "]"}], "]"}], "/", 
+               RowBox[{"Length", "[", "trimmedWords", "]"}]}], ",", "3"}], 
+             "]"}], "]"}]}], ",", "\"\<Text\>\""}], "]"}]}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"tCells", ",", 
+        RowBox[{"TextCell", "[", 
+         RowBox[{
+         "\"\<The most common punctuation: \>\"", ",", " ", "\"\<Text\>\""}], 
+         "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"tCells", ",", 
+        RowBox[{"CharacterCounts", "[", 
+         RowBox[{"ToString", "[", 
+          RowBox[{"StringCases", "[", 
+           RowBox[{"corpus", ",", " ", "PunctuationCharacter"}], "]"}], "]"}],
+          "]"}]}], "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"sentenceLengths", ":=", 
+       RowBox[{"Length", "/@", 
+        RowBox[{"StringSplit", "/@", "sentences"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"tCells", ",", 
+        RowBox[{"Histogram", "[", 
+         RowBox[{"sentenceLengths", ",", " ", 
+          RowBox[{
+          "PlotLabel", "\[Rule]", 
+           "\"\<Sentence length: Total distribution\>\""}]}], "]"}]}], "]"}], 
+      ";", "\[IndentingNewLine]", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"tCells", ",", 
+        RowBox[{"ListStepPlot", "[", 
+         RowBox[{"sentenceLengths", ",", " ", 
+          RowBox[{
+          "PlotLabel", "\[Rule]", 
+           "\"\<Sentence length: Over course of text\>\""}]}], "]"}]}], "]"}],
+       ";", "\[IndentingNewLine]", 
+      RowBox[{"nb", ":=", 
+       RowBox[{"CreateDocument", "[", "tCells", "]"}]}], ";", 
+      "\[IndentingNewLine]", "nb"}], "\[IndentingNewLine]", "}"}], 
+    ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.6832251528740396`*^9, 3.683225176261352*^9}, {
+   3.683234853408429*^9, 3.683234859559538*^9}, {3.6832367857232227`*^9, 
+   3.683236789665269*^9}, {3.683236962732229*^9, 3.6832369655568438`*^9}, {
+   3.683237245233981*^9, 3.683237260184497*^9}, {3.683237302474798*^9, 
+   3.683237305922886*^9}, {3.683237364318042*^9, 3.683237408323538*^9}, {
+   3.683237885826437*^9, 3.683237951838531*^9}, {3.683238004919833*^9, 
+   3.683238010984808*^9}, {3.6832381154662724`*^9, 3.68323825746981*^9}, {
+   3.68323861767457*^9, 3.6832386238005323`*^9}, {3.683241475672002*^9, 
+   3.683241484430729*^9}, {3.6832415471813393`*^9, 3.6832415945034103`*^9}, {
+   3.683243661794251*^9, 3.683243668414472*^9}, {3.68324384006439*^9, 
+   3.683243850812189*^9}, {3.6832439103653393`*^9, 3.683243910419347*^9}, {
+   3.6832440434786863`*^9, 3.683244064707738*^9}, 3.683244210283718*^9, {
+   3.683244298739847*^9, 3.683244302975775*^9}, {3.683250375747938*^9, 
+   3.683250408252351*^9}, {3.683250692513126*^9, 3.6832506956244164`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"(*", " ", 
+   RowBox[{
+   "importing", " ", "the", " ", "corpi", " ", "from", " ", "the", " ", 
+    "current", " ", "directory"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"files", ":=", 
+     RowBox[{"FileNames", "[", 
+      RowBox[{"\"\<*.txt\>\"", ",", 
+       RowBox[{"NotebookDirectory", "[", "]"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"corpi", ":=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"FileNameTake", "[", 
+          RowBox[{"files", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "]"}], ",", " ", 
+         RowBox[{"Import", "[", 
+          RowBox[{"files", "[", 
+           RowBox[{"[", "i", "]"}], "]"}], "]"}]}], "}"}], ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{"i", ",", 
+         RowBox[{"Length", "[", "files", "]"}]}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", "\[IndentingNewLine]", 
+   RowBox[{"(*", " ", 
+    RowBox[{
+    "Looping", " ", "through", " ", "corpi", " ", "and", " ", "exporting", 
+     " ", "each", " ", "analysis", " ", "as", " ", "pdf"}], " ", "*)"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"Do", "[", 
+    RowBox[{
+     RowBox[{"NotebookPrint", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"analyseText", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"corpi", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "[", 
+           RowBox[{"[", "2", "]"}], "]"}], ",", 
+          RowBox[{
+           RowBox[{"corpi", "[", 
+            RowBox[{"[", "i", "]"}], "]"}], "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], ",", 
+       RowBox[{
+        RowBox[{"NotebookDirectory", "[", "]"}], "<>", 
+        RowBox[{
+         RowBox[{"corpi", "[", 
+          RowBox[{"[", "i", "]"}], "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}], "<>", "\"\<.pdf\>\""}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"Length", "[", "corpi", "]"}]}], "}"}]}], "]"}], 
+   " "}]}]], "Input",
+ CellChangeTimes->{{3.6832382296916857`*^9, 3.68323823562604*^9}, {
+   3.6832383043041677`*^9, 3.683238310710588*^9}, {3.683238389332233*^9, 
+   3.6832383942485456`*^9}, {3.683241603030292*^9, 3.683241633412841*^9}, {
+   3.68324170337232*^9, 3.683241747057784*^9}, {3.6832435605223427`*^9, 
+   3.68324357339282*^9}, {3.683243610565975*^9, 3.683243610825926*^9}, {
+   3.683244223279406*^9, 3.683244262353384*^9}, {3.683244312579536*^9, 
+   3.683244314369471*^9}, 3.683250388480317*^9, {3.683250759578183*^9, 
+   3.683250812946891*^9}, {3.683250872665798*^9, 3.683250891470851*^9}}]
+},
+WindowSize->{808, 604},
+WindowMargins->{{95, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 6918, 158, 803, "Input"],
+Cell[7479, 180, 2743, 68, 222, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)
+

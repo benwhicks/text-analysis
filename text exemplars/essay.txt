@@ -1,0 +1,46 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\ri-6\sl276\slmult1\sa200\partightenfactor0
+
+\f0\fs22 \cf0 \'85Poetry is conventionally an aural art form \'96 rhyme doesn\'92t work unless we can hear it, after all - yet \'91Rhapsody on a Windy Night\'92 shows off Eliot\'92s command of the visual. The images Eliot selects to bombard us with seem disconnected and ambiguous, but this is not a weakness of Eliot\'92s verse; rather, his verse becomes a metaphor for the disconnected and ambiguous Modernist consciousness. Marshall McLuhan\'92s assertion that \'93the medium is the message\'94 was not written for Eliot, but it fits like a glove here. \
+If this \'91message\'92 feels too glib, Eliot uses one of his early images to make the point more concretely: when the speaker\'92s memory \'93throws up high and dry / A crowd of twisted things\'94 we are left in no doubt that this is precisely what the poet is doing. These twisted images are important, then; the images 
+\i are 
+\i0 the message. \
+What, then, are we to make of these disparate pictures? Just like in Prufrock\'92s opening simile, it does not pay to seek out the 
+\i rational
+\i0  connections between these elements, but to consider what kind of psychological mindset could have produced them. Rationalism, we remember, was fast being blown to bits in the trenches of Verdun when these poems were being edited. When the speaker compares \'93Midnight\'94 to a \'93madman\'94 shaking a \'93dead geranium,\'94 the effect is as discombobulating as when Prufrock likens the night air to an anesthetised patient. It only makes \'91sense,\'92 if we can call it that (Jack Scandrett\'92s thesis on Eliot\'92s general opacity comes to mind here) if we imagine a narrator paralysed by the futility of the universe saying it. A madman shaking a dead geranium is an image of 
+\i King Lear
+\i0 -like nothingness; nothing will come of it and it means nothing beyond its pathetic absurdity. Any young man who views midnight as such is surely lost to the parlous state of Modernity.\
+Perhaps these images are not as disconnected as they seem, though \'96 Eliot shows us his \'93street-lamp\'94 so many times that the pole becomes a motif, or even a character in the poem. Indeed, the poet personifies the lamp and its disembodied remarks constitute the only voice guiding our Baudelaire-esque 
+\i flaneur 
+\i0 through the grimy streets. It must be infused with some kind of wisdom, then \'96 none of the human characters are given any kind of voice at all: the \'93child\'94 on the \'93quay\'94 is rendered \'93automatic\'94 and the woman in the doorway is stripped of her humanity \'96 the only \'93grin\'94 she is afforded is a function of the shadows thrown by her apartment.\
+	\'93The street-lamp said, \'93Regard that woman\
+	Who hesitates towards you in the light of the door\
+\pard\pardeftab720\fi720\ri-6\sl276\slmult1\sa200\partightenfactor0
+\cf0 Which opens on her like a grin.\'94\
+\pard\pardeftab720\ri-6\sl276\slmult1\sa200\partightenfactor0
+\cf0 In this way, the image\'85\
+\'85Poetry is conventionally an aural art form \'96 rhyme doesn\'92t work unless we can hear it, after all - yet \'91Rhapsody on a Windy Night\'92 shows off Eliot\'92s command of the visual. The images Eliot selects to bombard us with seem disconnected and ambiguous, but this is not a weakness of Eliot\'92s verse; rather, his verse becomes a metaphor for the disconnected and ambiguous Modernist consciousness. Marshall McLuhan\'92s assertion that \'93the medium is the message\'94 was not written for Eliot, but it fits like a glove here. \
+If this \'91message\'92 feels too glib, Eliot uses one of his early images to make the point more concretely: when the speaker\'92s memory \'93throws up high and dry / A crowd of twisted things\'94 we are left in no doubt that this is precisely what the poet is doing. These twisted images are important, then; the images 
+\i are 
+\i0 the message. \
+What, then, are we to make of these disparate pictures? Just like in Prufrock\'92s opening simile, it does not pay to seek out the 
+\i rational
+\i0  connections between these elements, but to consider what kind of psychological mindset could have produced them. Rationalism, we remember, was fast being blown to bits in the trenches of Verdun when these poems were being edited. When the speaker compares \'93Midnight\'94 to a \'93madman\'94 shaking a \'93dead geranium,\'94 the effect is as discombobulating as when Prufrock likens the night air to an anesthetised patient. It only makes \'91sense,\'92 if we can call it that (Jack Scandrett\'92s thesis on Eliot\'92s general opacity comes to mind here) if we imagine a narrator paralysed by the futility of the universe saying it. A madman shaking a dead geranium is an image of 
+\i King Lear
+\i0 -like nothingness; nothing will come of it and it means nothing beyond its pathetic absurdity. Any young man who views midnight as such is surely lost to the parlous state of Modernity.\
+Perhaps these images are not as disconnected as they seem, though \'96 Eliot shows us his \'93street-lamp\'94 so many times that the pole becomes a motif, or even a character in the poem. Indeed, the poet personifies the lamp and its disembodied remarks constitute the only voice guiding our Baudelaire-esque 
+\i flaneur 
+\i0 through the grimy streets. It must be infused with some kind of wisdom, then \'96 none of the human characters are given any kind of voice at all: the \'93child\'94 on the \'93quay\'94 is rendered \'93automatic\'94 and the woman in the doorway is stripped of her humanity \'96 the only \'93grin\'94 she is afforded is a function of the shadows thrown by her apartment.\
+	\'93The street-lamp said, \'93Regard that woman\
+	Who hesitates towards you in the light of the door\
+\pard\pardeftab720\fi720\ri-6\sl276\slmult1\sa200\partightenfactor0
+\cf0 Which opens on her like a grin.\'94\
+\pard\pardeftab720\ri-6\sl276\slmult1\sa200\partightenfactor0
+\cf0 In this way, the image\'85\
+\
+\
+}

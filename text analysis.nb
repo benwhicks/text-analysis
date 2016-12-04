@@ -1,0 +1,3123 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.4' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[    138784,       3115]
+NotebookOptionsPosition[    135862,       3018]
+NotebookOutlinePosition[    136342,       3037]
+CellTagsIndexPosition[    136299,       3034]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["First we input the story as text:", "Text",
+ CellChangeTimes->{{3.675393862640223*^9, 3.6753938735407743`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+  "corpus", ":=", 
+   "\"\<Discoveries covering sensations of an inner, physical or spiritual \
+punch of reality of realisation can be far reading and transformative but \
+will always impact an individual\[IAcute]s life and those around. The Entire \
+History of you & Rainbows End both experience impacts affecting the \
+relationship between friends and loved ones reconsidering their beliefs and \
+values. \n\nIn rainbows End Gladis transforms Dolly\[IAcute]s life as well as \
+her own, impacting their cultural status and discoveries of the world around \
+them by Dollys rape experience, Gladis care has grown significantly for the \
+protection and well-being of Dolly. As Errol is introduced as a spark of \
+Dollys attraction and appearance catches Errols attention, Gladis is yet to \
+neither welcome nor except Errol as he as so foreign being an outsider, \
+making it harder for them to discover their love for each other . As far \
+reaching as an unexpected flood washing away their only home with all of \
+their belonging including their encyclopaedia (their only form of education) \
+having new discovers made as they were \[IGrave]forced to leave\[IHat].\n\n\
+Gladis discovers her inner confidence & courage to raise her family in the \
+environment & access to any education for Dolly to work, has transformed her \
+values , attitudes and beliefs towards the community & her own personal life \
+considering her protect and ability to look after her family. Cultural \
+disadvantages such as power and status has made Gladis a stronger and wiser \
+mother creating a role model overview.\n\nErrols surprising impact and \
+discovery on Dollys life places a huge amount of pressure to consider caring \
+for someone as much as someone caring for herself. Errol as connected new \
+information with previous experiences & cultural assumptions about Dolly has \
+transformed Dollys view on outsiders and her value of expectance has made \
+Dolly a much stronger and sophisticated person than she used to be. Dollys \
+life style & racial considerations make it harder for her to get employed and \
+as advice through experiences from Gladis and Errol help to transform and \
+discover more about Dolly than she knew herself could become true. \>\""}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tCells", ":=", 
+   RowBox[{"{", 
+    RowBox[{"TextCell", "[", 
+     RowBox[{"\"\<Escher - Belonging\>\"", ",", "\"\<Subtitle\>\""}], "]"}], 
+    "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"tCells", ",", 
+    RowBox[{"TextCell", "[", 
+     RowBox[{
+      RowBox[{"\"\<Number of words: \>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"WordCount", "[", "corpus", "]"}], "]"}]}], ",", 
+      "\"\<Text\>\""}], "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"words", ":=", 
+   RowBox[{"ToLowerCase", "[", 
+    RowBox[{"StringSplit", "[", 
+     RowBox[{"corpus", ",", " ", 
+      RowBox[{
+       RowBox[{"Except", "[", "WordCharacter", "]"}], ".."}]}], "]"}], 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"sentences", ":=", 
+   RowBox[{"TextSentences", "[", "corpus", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"tCells", ",", 
+    RowBox[{"TextCell", "[", 
+     RowBox[{
+      RowBox[{"\"\<Number of distinct words: \>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"CountDistinct", "[", "words", "]"}], "]"}]}], ",", 
+      "\"\<Text\>\""}], "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"tCells", ",", 
+    RowBox[{"TextCell", "[", 
+     RowBox[{
+      RowBox[{"\"\<Vocab density: \>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"N", "[", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"CountDistinct", "[", "words", "]"}], 
+           RowBox[{"Length", "[", "words", "]"}]], ",", "3"}], "]"}], "]"}]}],
+       ",", "\"\<Text\>\""}], "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"trimmedWords", ":=", 
+   RowBox[{"DeleteStopwords", "[", "words", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"tCells", ",", 
+    RowBox[{"TextCell", "[", 
+     RowBox[{
+      RowBox[{"\"\<Vocab density, without stop words: \>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"N", "[", 
+         RowBox[{
+          FractionBox[
+           RowBox[{"CountDistinct", "[", "trimmedWords", "]"}], 
+           RowBox[{"Length", "[", "trimmedWords", "]"}]], ",", "3"}], "]"}], 
+        "]"}]}], ",", "\"\<Text\>\""}], "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"tCells", ",", 
+    RowBox[{"TextCell", "[", 
+     RowBox[{
+     "\"\<The 20 most commonly used words:\>\"", ",", "\"\<Text\>\""}], 
+     "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"tCells", ",", 
+    RowBox[{"Take", "[", 
+     RowBox[{
+      RowBox[{"WordCounts", "[", 
+       RowBox[{"DeleteStopwords", "[", "corpus", "]"}], "]"}], ",", "20"}], 
+     "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"tCells", ",", 
+    RowBox[{"TextCell", "[", 
+     RowBox[{
+      RowBox[{"\"\<Density of adjectives: \>\"", "<>", 
+       RowBox[{"ToString", "[", 
+        RowBox[{"N", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Length", "[", 
+            RowBox[{"Intersection", "[", 
+             RowBox[{
+              RowBox[{"WordList", "[", "\"\<Adjective\>\"", "]"}], ",", 
+              "trimmedWords"}], "]"}], "]"}], "/", 
+           RowBox[{"Length", "[", "trimmedWords", "]"}]}], ",", "3"}], "]"}], 
+        "]"}]}], ",", "\"\<Text\>\""}], "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"tCells", ",", 
+    RowBox[{"TextCell", "[", 
+     RowBox[{
+     "\"\<The most common punctuation: \>\"", ",", " ", "\"\<Text\>\""}], 
+     "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"tCells", ",", 
+    RowBox[{"CharacterCounts", "[", 
+     RowBox[{"ToString", "[", 
+      RowBox[{"StringCases", "[", 
+       RowBox[{"corpus", ",", " ", "PunctuationCharacter"}], "]"}], "]"}], 
+     "]"}]}], "]"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"sentenceLengths", ":=", 
+   RowBox[{"Length", "/@", 
+    RowBox[{"StringSplit", "/@", "sentences"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"tCells", ",", 
+    RowBox[{"Histogram", "[", 
+     RowBox[{"sentenceLengths", ",", " ", 
+      RowBox[{
+      "PlotLabel", "\[Rule]", 
+       "\"\<Sentence length: Total distribution\>\""}]}], "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AppendTo", "[", 
+   RowBox[{"tCells", ",", 
+    RowBox[{"ListStepPlot", "[", 
+     RowBox[{"sentenceLengths", ",", " ", 
+      RowBox[{
+      "PlotLabel", "\[Rule]", 
+       "\"\<Sentence length: Over course of text\>\""}]}], "]"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"nb", ":=", 
+  RowBox[{"CreateDocument", "[", "tCells", "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"NotebookPrint", "[", 
+  RowBox[{"nb", ",", "\"\<Escher - Belonging Analysis.pdf\>\""}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.675392737269257*^9, 3.675392740620616*^9}, {
+   3.6753929198897457`*^9, 3.675392931681416*^9}, {3.6753934942345953`*^9, 
+   3.675393564328265*^9}, 3.67539366055021*^9, {3.675393964761394*^9, 
+   3.6753939660322113`*^9}, 3.675396435192326*^9, {3.6754630168270073`*^9, 
+   3.675463077857761*^9}, 3.6754631104573812`*^9, {3.675549432618335*^9, 
+   3.675549495217177*^9}, 3.67554954592584*^9, {3.675549581911922*^9, 
+   3.6755496419319572`*^9}, {3.6755501629798603`*^9, 3.675550205565534*^9}, {
+   3.675550383744668*^9, 3.6755503928855*^9}, {3.675550459329638*^9, 
+   3.675550579542878*^9}, {3.6755506423649693`*^9, 3.675550651429308*^9}, {
+   3.675550690063786*^9, 3.6755507192826567`*^9}, {3.6755512021152163`*^9, 
+   3.675551205408288*^9}, {3.6755515739666224`*^9, 3.675551577042952*^9}, {
+   3.677898751004634*^9, 3.6778990000923634`*^9}, {3.6778990305740643`*^9, 
+   3.677899099008556*^9}, {3.677899238426877*^9, 3.677899279461381*^9}, {
+   3.677899355875195*^9, 3.6778993693841343`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["nb"], "Input",
+ CellChangeTimes->{{3.677899004977347*^9, 3.6778990052563868`*^9}}],
+
+Cell[BoxData[
+ TemplateBox[{FrontEndObject[
+    LinkObject["p4qq3_shm", 3, 1]],195,
+   "FrontEndObject[LinkObject[\"p4qq3_shm\", 3, 1]]","195","\"Untitled-127\""},
+  "NotebookObjectUnsaved"]], "Output",
+ CellChangeTimes->{3.6778990062759447`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Analysis", "Subsection",
+ CellChangeTimes->{{3.675393897327034*^9, 3.675393899252092*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"TextCell", "[", 
+   RowBox[{
+    RowBox[{"\"\<Number of words: \>\"", "<>", 
+     RowBox[{"ToString", "[", 
+      RowBox[{"WordCount", "[", "corpus", "]"}], "]"}]}], ",", 
+    "\"\<Text\>\""}], "]"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"words", ":=", 
+  RowBox[{"ToLowerCase", "[", 
+   RowBox[{"StringSplit", "[", 
+    RowBox[{"corpus", ",", " ", 
+     RowBox[{
+      RowBox[{"Except", "[", "WordCharacter", "]"}], ".."}]}], "]"}], 
+   "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"sentences", ":=", 
+   RowBox[{"TextSentences", "[", "corpus", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"TextCell", "[", 
+   RowBox[{
+    RowBox[{"\"\<Number of distinct words: \>\"", "<>", 
+     RowBox[{"ToString", "[", 
+      RowBox[{"CountDistinct", "[", "words", "]"}], "]"}]}], ",", 
+    "\"\<Text\>\""}], "]"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"TextCell", "[", 
+  RowBox[{
+   RowBox[{"\"\<Vocab density: \>\"", "<>", 
+    RowBox[{"ToString", "[", 
+     RowBox[{"N", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"CountDistinct", "[", "words", "]"}], 
+        RowBox[{"Length", "[", "words", "]"}]], ",", "3"}], "]"}], "]"}]}], 
+   ",", "\"\<Text\>\""}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"trimmedWords", ":=", 
+    RowBox[{"DeleteStopwords", "[", "words", "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"TextCell", "[", 
+  RowBox[{
+   RowBox[{"\"\<Vocab density, without stop words: \>\"", "<>", 
+    RowBox[{"ToString", "[", 
+     RowBox[{"N", "[", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"CountDistinct", "[", "trimmedWords", "]"}], 
+        RowBox[{"Length", "[", "trimmedWords", "]"}]], ",", "3"}], "]"}], 
+     "]"}]}], ",", "\"\<Text\>\""}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"TextCell", "[", 
+  RowBox[{"\"\<The 20 most commonly used words:\>\"", ",", "\"\<Text\>\""}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"Take", "[", 
+  RowBox[{
+   RowBox[{"WordCounts", "[", 
+    RowBox[{"DeleteStopwords", "[", "corpus", "]"}], "]"}], ",", "20"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"TextCell", "[", 
+  RowBox[{
+   RowBox[{"\"\<Density of adjectives: \>\"", "<>", 
+    RowBox[{"ToString", "[", 
+     RowBox[{"N", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Length", "[", 
+         RowBox[{"Intersection", "[", 
+          RowBox[{
+           RowBox[{"WordList", "[", "\"\<Adjective\>\"", "]"}], ",", 
+           "trimmedWords"}], "]"}], "]"}], "/", 
+        RowBox[{"Length", "[", "trimmedWords", "]"}]}], ",", "3"}], "]"}], 
+     "]"}]}], ",", "\"\<Text\>\""}], "]"}], "\[IndentingNewLine]", 
+ RowBox[{"TextCell", "[", 
+  RowBox[{"\"\<The most common punctuation: \>\"", ",", " ", "\"\<Text\>\""}],
+   "]"}], "\[IndentingNewLine]", 
+ RowBox[{"CharacterCounts", "[", 
+  RowBox[{"ToString", "[", 
+   RowBox[{"StringCases", "[", 
+    RowBox[{"corpus", ",", " ", "PunctuationCharacter"}], "]"}], "]"}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"sentenceLengths", ":=", 
+   RowBox[{"Length", "/@", 
+    RowBox[{"StringSplit", "/@", "sentences"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Histogram", "[", 
+  RowBox[{"sentenceLengths", ",", " ", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", "\"\<Sentence length: Total distribution\>\""}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"ListStepPlot", "[", 
+  RowBox[{"sentenceLengths", ",", " ", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", "\"\<Sentence length: Over course of text\>\""}]}],
+   "]"}]}], "Input",
+ CellChangeTimes->{{3.6753929720761633`*^9, 3.6753929805245037`*^9}, {
+  3.675393977109055*^9, 3.675393977722578*^9}, {3.675394088215886*^9, 
+  3.6753941466851797`*^9}, {3.675464132316992*^9, 3.675464146221715*^9}, {
+  3.675465411353387*^9, 3.675465412361476*^9}, {3.677896712754531*^9, 
+  3.6778967685305777`*^9}, {3.677896801678894*^9, 3.6778968245780077`*^9}, {
+  3.677896882245397*^9, 3.677897103910363*^9}, {3.677897887583503*^9, 
+  3.6778979157057467`*^9}, {3.6778979987321253`*^9, 3.6778980674944143`*^9}, {
+  3.6778982799160557`*^9, 3.677898291741016*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Number of words: 377", "Text"],
+  TextCell["Number of words: 377", "Text"]]], "Output",
+ CellChangeTimes->{
+  3.675392980976799*^9, 3.6753936856059227`*^9, 3.675393978465207*^9, {
+   3.6753940909887753`*^9, 3.675394148074791*^9}, 3.67539632687682*^9, 
+   3.675396450578566*^9, 3.6754585793857737`*^9, {3.675463056542307*^9, 
+   3.675463062051365*^9}, 3.6754633961958437`*^9, 3.675464147102933*^9, 
+   3.675464191573565*^9, 3.6754654197726917`*^9, 3.675549519876205*^9, {
+   3.6755496649150133`*^9, 3.675549674006103*^9}, {3.675550850165369*^9, 
+   3.67555086697152*^9}, 3.675551211956706*^9, 3.6755515867632933`*^9, {
+   3.677896725771192*^9, 3.677896768821948*^9}, 3.677896825742284*^9, {
+   3.677896925665451*^9, 3.677896977165057*^9}, {3.677897017620698*^9, 
+   3.6778970449969053`*^9}, {3.677897091552555*^9, 3.677897104391197*^9}, {
+   3.67789790792413*^9, 3.677897915970951*^9}, {3.677898016396137*^9, 
+   3.677898067975259*^9}, {3.67789829881889*^9, 3.67789831495435*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Number of distinct words: 189", "Text"],
+  TextCell["Number of distinct words: 189", "Text"]]], "Output",
+ CellChangeTimes->{
+  3.675392980976799*^9, 3.6753936856059227`*^9, 3.675393978465207*^9, {
+   3.6753940909887753`*^9, 3.675394148074791*^9}, 3.67539632687682*^9, 
+   3.675396450578566*^9, 3.6754585793857737`*^9, {3.675463056542307*^9, 
+   3.675463062051365*^9}, 3.6754633961958437`*^9, 3.675464147102933*^9, 
+   3.675464191573565*^9, 3.6754654197726917`*^9, 3.675549519876205*^9, {
+   3.6755496649150133`*^9, 3.675549674006103*^9}, {3.675550850165369*^9, 
+   3.67555086697152*^9}, 3.675551211956706*^9, 3.6755515867632933`*^9, {
+   3.677896725771192*^9, 3.677896768821948*^9}, 3.677896825742284*^9, {
+   3.677896925665451*^9, 3.677896977165057*^9}, {3.677897017620698*^9, 
+   3.6778970449969053`*^9}, {3.677897091552555*^9, 3.677897104391197*^9}, {
+   3.67789790792413*^9, 3.677897915970951*^9}, {3.677898016396137*^9, 
+   3.677898067975259*^9}, {3.67789829881889*^9, 3.677898314970752*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Vocab density: 0.495", "Text"],
+  TextCell["Vocab density: 0.495", "Text"]]], "Output",
+ CellChangeTimes->{
+  3.675392980976799*^9, 3.6753936856059227`*^9, 3.675393978465207*^9, {
+   3.6753940909887753`*^9, 3.675394148074791*^9}, 3.67539632687682*^9, 
+   3.675396450578566*^9, 3.6754585793857737`*^9, {3.675463056542307*^9, 
+   3.675463062051365*^9}, 3.6754633961958437`*^9, 3.675464147102933*^9, 
+   3.675464191573565*^9, 3.6754654197726917`*^9, 3.675549519876205*^9, {
+   3.6755496649150133`*^9, 3.675549674006103*^9}, {3.675550850165369*^9, 
+   3.67555086697152*^9}, 3.675551211956706*^9, 3.6755515867632933`*^9, {
+   3.677896725771192*^9, 3.677896768821948*^9}, 3.677896825742284*^9, {
+   3.677896925665451*^9, 3.677896977165057*^9}, {3.677897017620698*^9, 
+   3.6778970449969053`*^9}, {3.677897091552555*^9, 3.677897104391197*^9}, {
+   3.67789790792413*^9, 3.677897915970951*^9}, {3.677898016396137*^9, 
+   3.677898067975259*^9}, {3.67789829881889*^9, 3.677898314981798*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Vocab density, without stop words: 0.667", "Text"],
+  TextCell["Vocab density, without stop words: 0.667", "Text"]]], "Output",
+ CellChangeTimes->{
+  3.675392980976799*^9, 3.6753936856059227`*^9, 3.675393978465207*^9, {
+   3.6753940909887753`*^9, 3.675394148074791*^9}, 3.67539632687682*^9, 
+   3.675396450578566*^9, 3.6754585793857737`*^9, {3.675463056542307*^9, 
+   3.675463062051365*^9}, 3.6754633961958437`*^9, 3.675464147102933*^9, 
+   3.675464191573565*^9, 3.6754654197726917`*^9, 3.675549519876205*^9, {
+   3.6755496649150133`*^9, 3.675549674006103*^9}, {3.675550850165369*^9, 
+   3.67555086697152*^9}, 3.675551211956706*^9, 3.6755515867632933`*^9, {
+   3.677896725771192*^9, 3.677896768821948*^9}, 3.677896825742284*^9, {
+   3.677896925665451*^9, 3.677896977165057*^9}, {3.677897017620698*^9, 
+   3.6778970449969053`*^9}, {3.677897091552555*^9, 3.677897104391197*^9}, {
+   3.67789790792413*^9, 3.677897915970951*^9}, {3.677898016396137*^9, 
+   3.677898067975259*^9}, {3.67789829881889*^9, 3.677898314992803*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[Cell["The 20 most commonly used words:", "Text"],
+  TextCell["The 20 most commonly used words:", "Text"]]], "Output",
+ CellChangeTimes->{
+  3.675392980976799*^9, 3.6753936856059227`*^9, 3.675393978465207*^9, {
+   3.6753940909887753`*^9, 3.675394148074791*^9}, 3.67539632687682*^9, 
+   3.675396450578566*^9, 3.6754585793857737`*^9, {3.675463056542307*^9, 
+   3.675463062051365*^9}, 3.6754633961958437`*^9, 3.675464147102933*^9, 
+   3.675464191573565*^9, 3.6754654197726917`*^9, 3.675549519876205*^9, {
+   3.6755496649150133`*^9, 3.675549674006103*^9}, {3.675550850165369*^9, 
+   3.67555086697152*^9}, 3.675551211956706*^9, 3.6755515867632933`*^9, {
+   3.677896725771192*^9, 3.677896768821948*^9}, 3.677896825742284*^9, {
+   3.677896925665451*^9, 3.677896977165057*^9}, {3.677897017620698*^9, 
+   3.6778970449969053`*^9}, {3.677897091552555*^9, 3.677897104391197*^9}, {
+   3.67789790792413*^9, 3.677897915970951*^9}, {3.677898016396137*^9, 
+   3.677898067975259*^9}, {3.67789829881889*^9, 3.677898315005657*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"Macbeth\"\>", "\[Rule]", "15"}], ",", 
+   RowBox[{"\<\"ambition\"\>", "\[Rule]", "9"}], ",", 
+   RowBox[{"\<\"play\"\>", "\[Rule]", "8"}], ",", 
+   RowBox[{"\<\"Lady\"\>", "\[Rule]", "4"}], ",", 
+   RowBox[{"\<\"king\"\>", "\[Rule]", "4"}], ",", 
+   RowBox[{"\<\"witches\"\>", "\[Rule]", "3"}], ",", 
+   RowBox[{"\<\"Thane\"\>", "\[Rule]", "3"}], ",", 
+   RowBox[{"\<\"prophecy\"\>", "\[Rule]", "3"}], ",", 
+   RowBox[{"\<\"force\"\>", "\[Rule]", "3"}], ",", 
+   RowBox[{"\<\"driving\"\>", "\[Rule]", "3"}], ",", 
+   RowBox[{"\<\"Act\"\>", "\[Rule]", "3"}], ",", 
+   RowBox[{"\<\"uses\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"throughout\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"Shakespeare\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"resolved\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"reaction\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"power\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"later\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"Glamis\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"Foul\"\>", "\[Rule]", "2"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{
+  3.675392980976799*^9, 3.6753936856059227`*^9, 3.675393978465207*^9, {
+   3.6753940909887753`*^9, 3.675394148074791*^9}, 3.67539632687682*^9, 
+   3.675396450578566*^9, 3.6754585793857737`*^9, {3.675463056542307*^9, 
+   3.675463062051365*^9}, 3.6754633961958437`*^9, 3.675464147102933*^9, 
+   3.675464191573565*^9, 3.6754654197726917`*^9, 3.675549519876205*^9, {
+   3.6755496649150133`*^9, 3.675549674006103*^9}, {3.675550850165369*^9, 
+   3.67555086697152*^9}, 3.675551211956706*^9, 3.6755515867632933`*^9, {
+   3.677896725771192*^9, 3.677896768821948*^9}, 3.677896825742284*^9, {
+   3.677896925665451*^9, 3.677896977165057*^9}, {3.677897017620698*^9, 
+   3.6778970449969053`*^9}, {3.677897091552555*^9, 3.677897104391197*^9}, {
+   3.67789790792413*^9, 3.677897915970951*^9}, {3.677898016396137*^9, 
+   3.677898067975259*^9}, {3.67789829881889*^9, 3.6778983150162697`*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[Cell["Density of adjectives: 0.164", "Text"],
+  TextCell["Density of adjectives: 0.164", "Text"]]], "Output",
+ CellChangeTimes->{
+  3.675392980976799*^9, 3.6753936856059227`*^9, 3.675393978465207*^9, {
+   3.6753940909887753`*^9, 3.675394148074791*^9}, 3.67539632687682*^9, 
+   3.675396450578566*^9, 3.6754585793857737`*^9, {3.675463056542307*^9, 
+   3.675463062051365*^9}, 3.6754633961958437`*^9, 3.675464147102933*^9, 
+   3.675464191573565*^9, 3.6754654197726917`*^9, 3.675549519876205*^9, {
+   3.6755496649150133`*^9, 3.675549674006103*^9}, {3.675550850165369*^9, 
+   3.67555086697152*^9}, 3.675551211956706*^9, 3.6755515867632933`*^9, {
+   3.677896725771192*^9, 3.677896768821948*^9}, 3.677896825742284*^9, {
+   3.677896925665451*^9, 3.677896977165057*^9}, {3.677897017620698*^9, 
+   3.6778970449969053`*^9}, {3.677897091552555*^9, 3.677897104391197*^9}, {
+   3.67789790792413*^9, 3.677897915970951*^9}, {3.677898016396137*^9, 
+   3.677898067975259*^9}, {3.67789829881889*^9, 3.677898315389159*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[Cell["The most common punctuation: ", "Text"],
+  TextCell["The most common punctuation: ", "Text"]]], "Output",
+ CellChangeTimes->{
+  3.675392980976799*^9, 3.6753936856059227`*^9, 3.675393978465207*^9, {
+   3.6753940909887753`*^9, 3.675394148074791*^9}, 3.67539632687682*^9, 
+   3.675396450578566*^9, 3.6754585793857737`*^9, {3.675463056542307*^9, 
+   3.675463062051365*^9}, 3.6754633961958437`*^9, 3.675464147102933*^9, 
+   3.675464191573565*^9, 3.6754654197726917`*^9, 3.675549519876205*^9, {
+   3.6755496649150133`*^9, 3.675549674006103*^9}, {3.675550850165369*^9, 
+   3.67555086697152*^9}, 3.675551211956706*^9, 3.6755515867632933`*^9, {
+   3.677896725771192*^9, 3.677896768821948*^9}, 3.677896825742284*^9, {
+   3.677896925665451*^9, 3.677896977165057*^9}, {3.677897017620698*^9, 
+   3.6778970449969053`*^9}, {3.677897091552555*^9, 3.677897104391197*^9}, {
+   3.67789790792413*^9, 3.677897915970951*^9}, {3.677898016396137*^9, 
+   3.677898067975259*^9}, {3.67789829881889*^9, 3.677898315398971*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\",\"\>", "\[Rule]", "96"}], ",", 
+   RowBox[{"\<\" \"\>", "\[Rule]", "66"}], ",", 
+   RowBox[{"\<\".\"\>", "\[Rule]", "19"}], ",", 
+   RowBox[{"\<\"\[CloseCurlyQuote]\"\>", "\[Rule]", "6"}], ",", 
+   RowBox[{"\<\"\[OpenCurlyDoubleQuote]\"\>", "\[Rule]", "4"}], ",", 
+   RowBox[{"\<\"\[CloseCurlyDoubleQuote]\"\>", "\[Rule]", "4"}], ",", 
+   RowBox[{"\<\"/\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"\[OpenCurlyQuote]\"\>", "\[Rule]", "1"}], ",", 
+   RowBox[{"\<\"}\"\>", "\[Rule]", "1"}], ",", 
+   RowBox[{"\<\"{\"\>", "\[Rule]", "1"}], ",", 
+   RowBox[{"\<\"!\"\>", "\[Rule]", "1"}]}], "\[RightAssociation]"}]], "Output",\
+
+ CellChangeTimes->{
+  3.675392980976799*^9, 3.6753936856059227`*^9, 3.675393978465207*^9, {
+   3.6753940909887753`*^9, 3.675394148074791*^9}, 3.67539632687682*^9, 
+   3.675396450578566*^9, 3.6754585793857737`*^9, {3.675463056542307*^9, 
+   3.675463062051365*^9}, 3.6754633961958437`*^9, 3.675464147102933*^9, 
+   3.675464191573565*^9, 3.6754654197726917`*^9, 3.675549519876205*^9, {
+   3.6755496649150133`*^9, 3.675549674006103*^9}, {3.675550850165369*^9, 
+   3.67555086697152*^9}, 3.675551211956706*^9, 3.6755515867632933`*^9, {
+   3.677896725771192*^9, 3.677896768821948*^9}, 3.677896825742284*^9, {
+   3.677896925665451*^9, 3.677896977165057*^9}, {3.677897017620698*^9, 
+   3.6778970449969053`*^9}, {3.677897091552555*^9, 3.677897104391197*^9}, {
+   3.67789790792413*^9, 3.677897915970951*^9}, {3.677898016396137*^9, 
+   3.677898067975259*^9}, {3.67789829881889*^9, 3.677898315409617*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{
+    Opacity[0.6579999999999999], Thickness[Small]}], {}, 
+    {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{
+     Opacity[0.6579999999999999], Thickness[Small]}], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{0., 0}, {10., 2}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{15.465772618094478`, 99.91293034427544}, {
+          52.841425243590884`, 103.60230332939004`}}],
+        StatusArea[#, 2]& ,
+        TagBoxNote->"2"],
+       StyleBox["2", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[2, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{10., 0}, {20., 8}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{99.41293034427544, 
+          183.8600880704564}, {-97.94120901380658, 103.60230332939004`}}],
+        StatusArea[#, 8]& ,
+        TagBoxNote->"8"],
+       StyleBox["8", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[8, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{20., 0}, {30., 5}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{183.3600880704564, 
+          267.80724579663735`}, {-22.549891885107854`, 103.60230332939004`}}],
+        
+        StatusArea[#, 5]& ,
+        TagBoxNote->"5"],
+       StyleBox["5", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[5, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{30., 0}, {40., 4}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{267.30724579663735`, 351.75440352281834`}, {
+          2.5805471577917274`, 103.60230332939004`}}],
+        StatusArea[#, 4]& ,
+        TagBoxNote->"4"],
+       StyleBox["4", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[4, {}], "Tooltip"]& ]}, {}, {}}, {{}, {}, {}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{-0.8, 0},
+  BaseStyle->{FontFamily -> "Arial"},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  PlotLabel->FormBox[
+   "\"Sentence length: Total distribution\"", TraditionalForm],
+  PlotRange->{{0., 40.}, {All, All}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.675392980976799*^9, 3.6753936856059227`*^9, 3.675393978465207*^9, {
+   3.6753940909887753`*^9, 3.675394148074791*^9}, 3.67539632687682*^9, 
+   3.675396450578566*^9, 3.6754585793857737`*^9, {3.675463056542307*^9, 
+   3.675463062051365*^9}, 3.6754633961958437`*^9, 3.675464147102933*^9, 
+   3.675464191573565*^9, 3.6754654197726917`*^9, 3.675549519876205*^9, {
+   3.6755496649150133`*^9, 3.675549674006103*^9}, {3.675550850165369*^9, 
+   3.67555086697152*^9}, 3.675551211956706*^9, 3.6755515867632933`*^9, {
+   3.677896725771192*^9, 3.677896768821948*^9}, 3.677896825742284*^9, {
+   3.677896925665451*^9, 3.677896977165057*^9}, {3.677897017620698*^9, 
+   3.6778970449969053`*^9}, {3.677897091552555*^9, 3.677897104391197*^9}, {
+   3.67789790792413*^9, 3.677897915970951*^9}, {3.677898016396137*^9, 
+   3.677898067975259*^9}, {3.67789829881889*^9, 3.6778983154716663`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.019444444444444445`],
+      AbsoluteThickness[1.6], 
+     StyleBox[LineBox[CompressedData["
+1:eJxdkUkKwkAQRYMb3SkoKBhwjvM8bNOQG3gEwbVX8CCeyWu4deHKjUP/3z9Q
+DeHxeVXVSapzuhzPhSiKkt/zJ84zBWfu9vFHmQXkxt29LiqDJXJFX1YGK+TB
+PbyvKoM11cPXTX+DTOibymBs5rfM/DZ4de7lfUcZvktu6XvKYF/z4AdmfniP
+Pf1QGRyZ/rHpn6gOfmr6wh5i+rn57gWZ0S+VwXwPb+/tXta6Dz7PYNhzRp9n
+MPynlNwpfwEvHI3y
+       "]],
+      FontFamily->"Arial"]}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  BaseStyle->{FontFamily -> "Arial"},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+   "\"Sentence length: Over course of text\"", TraditionalForm],
+  PlotRange->{{0, 20.}, {0, 38.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.675392980976799*^9, 3.6753936856059227`*^9, 3.675393978465207*^9, {
+   3.6753940909887753`*^9, 3.675394148074791*^9}, 3.67539632687682*^9, 
+   3.675396450578566*^9, 3.6754585793857737`*^9, {3.675463056542307*^9, 
+   3.675463062051365*^9}, 3.6754633961958437`*^9, 3.675464147102933*^9, 
+   3.675464191573565*^9, 3.6754654197726917`*^9, 3.675549519876205*^9, {
+   3.6755496649150133`*^9, 3.675549674006103*^9}, {3.675550850165369*^9, 
+   3.67555086697152*^9}, 3.675551211956706*^9, 3.6755515867632933`*^9, {
+   3.677896725771192*^9, 3.677896768821948*^9}, 3.677896825742284*^9, {
+   3.677896925665451*^9, 3.677896977165057*^9}, {3.677897017620698*^9, 
+   3.6778970449969053`*^9}, {3.677897091552555*^9, 3.677897104391197*^9}, {
+   3.67789790792413*^9, 3.677897915970951*^9}, {3.677898016396137*^9, 
+   3.677898067975259*^9}, {3.67789829881889*^9, 3.6778983155323277`*^9}}]
+}, Open  ]],
+
+Cell["\<\
+Using the two above, we can create a measure of the vocabularly variety, by \
+dividing the distinct words by the total words, we get a measure from 0 to 1 \
+of the word variation. 1 being every single word is different.\
+\>", "Text",
+ CellChangeTimes->{{3.675393930299539*^9, 3.675394057069804*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["WhitespaceCharacter"], "Input",
+ CellChangeTimes->{{3.675394064124847*^9, 3.6753940683984747`*^9}, {
+   3.675394158298132*^9, 3.6753942105594883`*^9}, {3.677896841454979*^9, 
+   3.677896845778512*^9}, 3.6778968803401527`*^9, {3.677897659003291*^9, 
+   3.677897660602291*^9}, {3.677897707055344*^9, 3.6778977978821793`*^9}, {
+   3.677897856353937*^9, 3.677897865844007*^9}, {3.6778979535532293`*^9, 
+   3.677897961663229*^9}}],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\",\"\>", "\[Rule]", "96"}], ",", 
+   RowBox[{"\<\" \"\>", "\[Rule]", "66"}], ",", 
+   RowBox[{"\<\".\"\>", "\[Rule]", "19"}], ",", 
+   RowBox[{"\<\"\[CloseCurlyQuote]\"\>", "\[Rule]", "6"}], ",", 
+   RowBox[{"\<\"\[OpenCurlyDoubleQuote]\"\>", "\[Rule]", "4"}], ",", 
+   RowBox[{"\<\"\[CloseCurlyDoubleQuote]\"\>", "\[Rule]", "4"}], ",", 
+   RowBox[{"\<\"/\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"\[OpenCurlyQuote]\"\>", "\[Rule]", "1"}], ",", 
+   RowBox[{"\<\"}\"\>", "\[Rule]", "1"}], ",", 
+   RowBox[{"\<\"{\"\>", "\[Rule]", "1"}], ",", 
+   RowBox[{"\<\"!\"\>", "\[Rule]", "1"}]}], "\[RightAssociation]"}]], "Output",\
+
+ CellChangeTimes->{3.677897866196043*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "We can also remove words such as \[OpenCurlyDoubleQuote]then\
+\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]this\[CloseCurlyDoubleQuote], \
+\[OpenCurlyDoubleQuote]and\[CloseCurlyDoubleQuote], known as ",
+ StyleBox["stop words, ",
+  FontSlant->"Italic"],
+ "and then repeat the vocab density calculation. This should be a larger \
+number more often than not."
+}], "Text",
+ CellChangeTimes->{{3.675394239192943*^9, 3.67539429281188*^9}, {
+  3.6753943663929777`*^9, 3.675394373584735*^9}, {3.6754664631962347`*^9, 
+  3.675466477938855*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.675394298936325*^9, 3.6753943975088377`*^9}, {
+   3.6754604945387287`*^9, 3.675460507130638*^9}, {3.675465442899159*^9, 
+   3.6754654441366177`*^9}, 3.677896988176031*^9}],
+
+Cell[BoxData["\<\"Vocab density, without stop words: \"\>"], "Print",
+ CellChangeTimes->{{3.6753943498242826`*^9, 3.6753943601998053`*^9}, 
+   3.6753963391057568`*^9, 3.675396456676311*^9, 3.675458593430612*^9, 
+   3.675460509470529*^9, 3.6754634009072313`*^9, 3.675464163684009*^9, 
+   3.6754654449274683`*^9, 3.67555087575308*^9, 3.675551218674531*^9, 
+   3.675551592422741*^9}],
+
+Cell[BoxData["0.6666666666666666`"], "Output",
+ CellChangeTimes->{{3.6753943498681507`*^9, 3.675394360239669*^9}, 
+   3.6753963391475077`*^9, 3.675396456709321*^9, 3.6754585934698057`*^9, 
+   3.6754605095140247`*^9, 3.67546340095935*^9, 3.675464163728983*^9, 
+   3.675465444993709*^9, 3.6755508757625093`*^9, 3.675551218706986*^9, 
+   3.675551592432518*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Print", "[", "\"\<The 20 most commonly used words:\>\"", "]"}], 
+  ";", 
+  RowBox[{"Take", "[", 
+   RowBox[{
+    RowBox[{"WordCounts", "[", 
+     RowBox[{"DeleteStopwords", "[", "corpus", "]"}], "]"}], ",", "20"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.675462649278408*^9, 3.675462661206094*^9}, {
+  3.6754627146359463`*^9, 3.675462719201824*^9}}],
+
+Cell[BoxData["\<\"The 20 most commonly used words:\"\>"], "Print",
+ CellChangeTimes->{3.6754627202585*^9, 3.675463408470573*^9, 
+  3.675464171605308*^9, 3.675550881769689*^9, 3.675551221187394*^9, 
+  3.6755515953184767`*^9}],
+
+Cell[BoxData[
+ RowBox[{"\[LeftAssociation]", 
+  RowBox[{
+   RowBox[{"\<\"Macbeth\"\>", "\[Rule]", "15"}], ",", 
+   RowBox[{"\<\"ambition\"\>", "\[Rule]", "9"}], ",", 
+   RowBox[{"\<\"play\"\>", "\[Rule]", "8"}], ",", 
+   RowBox[{"\<\"Lady\"\>", "\[Rule]", "4"}], ",", 
+   RowBox[{"\<\"king\"\>", "\[Rule]", "4"}], ",", 
+   RowBox[{"\<\"witches\"\>", "\[Rule]", "3"}], ",", 
+   RowBox[{"\<\"Thane\"\>", "\[Rule]", "3"}], ",", 
+   RowBox[{"\<\"prophecy\"\>", "\[Rule]", "3"}], ",", 
+   RowBox[{"\<\"force\"\>", "\[Rule]", "3"}], ",", 
+   RowBox[{"\<\"driving\"\>", "\[Rule]", "3"}], ",", 
+   RowBox[{"\<\"Act\"\>", "\[Rule]", "3"}], ",", 
+   RowBox[{"\<\"uses\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"throughout\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"Shakespeare\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"resolved\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"reaction\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"power\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"later\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"Glamis\"\>", "\[Rule]", "2"}], ",", 
+   RowBox[{"\<\"Foul\"\>", "\[Rule]", "2"}]}], 
+  "\[RightAssociation]"}]], "Output",
+ CellChangeTimes->{3.6754627203596354`*^9, 3.6754634085643063`*^9, 
+  3.675464171704818*^9, 3.675550881823825*^9, 3.6755512212420177`*^9, 
+  3.675551595329465*^9}]
+}, Open  ]],
+
+Cell["\<\
+We can also look at the density of certain types of words, for example:\
+\>", "Text",
+ CellChangeTimes->{{3.675465278660062*^9, 3.675465291332139*^9}}],
+
+Cell["\<\
+Note that the above example may count words as adjectives when they are not \
+being used as such in a sentence, however it should be good enough for a \
+rough measure.\
+\>", "Text",
+ CellChangeTimes->{{3.67546533392337*^9, 3.6754653725609617`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Sentence length", "Subsection",
+ CellChangeTimes->{{3.675461000533414*^9, 3.6754610035433064`*^9}}],
+
+Cell["We can also look at the sentece length throughout the text", "Text",
+ CellChangeTimes->{{3.6753944067082987`*^9, 3.675394421646248*^9}, {
+  3.675396561757873*^9, 3.675396599154113*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"sentenceLengths", ":=", 
+   RowBox[{"Length", "/@", 
+    RowBox[{"StringSplit", "/@", "sentences"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Histogram", "[", 
+  RowBox[{"sentenceLengths", ",", " ", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", "\"\<Sentence length: Total distribution\>\""}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.67539635550414*^9, 3.675396428748989*^9}, {
+  3.6753964706579847`*^9, 3.6753965816685762`*^9}, {3.675396614872634*^9, 
+  3.6753966186689043`*^9}, {3.6754606528304453`*^9, 3.675460681751775*^9}, {
+  3.675461039725254*^9, 3.675461043556035*^9}, {3.675461110542707*^9, 
+  3.6754611650200167`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{
+    Opacity[0.6579999999999999], Thickness[Small]}], {}, 
+    {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{
+     Opacity[0.6579999999999999], Thickness[Small]}], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{0., 0}, {10., 2}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{15.465772618094478`, 99.91293034427544}, {
+          52.841425243590884`, 103.60230332939004`}}],
+        StatusArea[#, 2]& ,
+        TagBoxNote->"2"],
+       StyleBox["2", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[2, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{10., 0}, {20., 8}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{99.41293034427544, 
+          183.8600880704564}, {-97.94120901380658, 103.60230332939004`}}],
+        StatusArea[#, 8]& ,
+        TagBoxNote->"8"],
+       StyleBox["8", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[8, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{20., 0}, {30., 5}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{183.3600880704564, 
+          267.80724579663735`}, {-22.549891885107854`, 103.60230332939004`}}],
+        
+        StatusArea[#, 5]& ,
+        TagBoxNote->"5"],
+       StyleBox["5", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[5, {}], "Tooltip"]& ], 
+     TagBox[
+      TooltipBox[
+       TagBox[
+        DynamicBox[{
+          FEPrivate`If[
+           CurrentValue["MouseOver"], 
+           EdgeForm[{
+             GrayLevel[0.5], 
+             AbsoluteThickness[1.5], 
+             Opacity[0.66]}], {}, {}], 
+          RectangleBox[{30., 0}, {40., 4}, "RoundingRadius" -> 0]},
+         ImageSizeCache->{{267.30724579663735`, 351.75440352281834`}, {
+          2.5805471577917274`, 103.60230332939004`}}],
+        StatusArea[#, 4]& ,
+        TagBoxNote->"4"],
+       StyleBox["4", {}, StripOnInput -> False]],
+      Annotation[#, 
+       Style[4, {}], "Tooltip"]& ]}, {}, {}}, {{}, {}, {}, {}}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{-0.8, 0},
+  BaseStyle->{FontFamily -> "Arial"},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  PlotLabel->FormBox[
+   "\"Sentence length: Total distribution\"", TraditionalForm],
+  PlotRange->{{0., 40.}, {All, All}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.675396577283661*^9, 3.67539658243998*^9}, 
+   3.675396619225141*^9, 3.675458597290954*^9, 3.675460682522131*^9, 
+   3.675461126399117*^9, 3.675461165660123*^9, 3.675464175346198*^9, {
+   3.675464210181134*^9, 3.675464220779825*^9}, 3.6754642836485853`*^9, 
+   3.675550896577289*^9, 3.675551309431574*^9, 3.675551602036068*^9, 
+   3.677898323808278*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ListStepPlot", "[", 
+  RowBox[{"sentenceLengths", ",", " ", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", "\"\<Sentence length: Over course of text\>\""}]}],
+   "]"}]], "Input",
+ CellChangeTimes->{{3.67539343751332*^9, 3.675393456853629*^9}, {
+  3.675447062614607*^9, 3.675447112614209*^9}, {3.675447151005476*^9, 
+  3.675447176816248*^9}, {3.675460688277326*^9, 3.675460689171632*^9}, {
+  3.6754611362893353`*^9, 3.6754611730646067`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.019444444444444445`],
+      AbsoluteThickness[1.6], 
+     StyleBox[LineBox[CompressedData["
+1:eJxdkUkKwkAQRYMb3SkoKBhwjvM8bNOQG3gEwbVX8CCeyWu4deHKjUP/3z9Q
+DeHxeVXVSapzuhzPhSiKkt/zJ84zBWfu9vFHmQXkxt29LiqDJXJFX1YGK+TB
+PbyvKoM11cPXTX+DTOibymBs5rfM/DZ4de7lfUcZvktu6XvKYF/z4AdmfniP
+Pf1QGRyZ/rHpn6gOfmr6wh5i+rn57gWZ0S+VwXwPb+/tXta6Dz7PYNhzRp9n
+MPynlNwpfwEvHI3y
+       "]],
+      FontFamily->"Arial"]}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  BaseStyle->{FontFamily -> "Arial"},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+   "\"Sentence length: Over course of text\"", TraditionalForm],
+  PlotRange->{{0, 20.}, {0, 38.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.675393440808247*^9, 3.6753934574786777`*^9}, 
+   3.6753936965098057`*^9, 3.675396343271394*^9, {3.675447069053665*^9, 
+   3.6754471130604773`*^9}, {3.6754471542851677`*^9, 3.675447177388097*^9}, 
+   3.675458600246151*^9, 3.6754606897446947`*^9, {3.67546115400289*^9, 
+   3.675461173753799*^9}, 3.6754642181115294`*^9, 3.6755509017862177`*^9, 
+   3.6755513144300632`*^9, 3.675551604459257*^9}]
+}, Open  ]],
+
+Cell["\<\
+We can also look at the mean of the absolute value of the second differences \
+of the sentence length as a measure of the variability of the sentence \
+lengths throughout the text. This gives us a sense of how much short \
+sentences follow long ones (higher being more variation)\
+\>", "Text",
+ CellChangeTimes->{{3.6754608005244513`*^9, 3.675460826928832*^9}, {
+  3.6754608759681168`*^9, 3.675460945529243*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"Mean", "[", 
+   RowBox[{"Abs", "/@", 
+    RowBox[{"Differences", "[", 
+     RowBox[{"sentenceLengths", ",", "2"}], "]"}]}], "]"}], "//", 
+  "N"}], "\[IndentingNewLine]", 
+ RowBox[{"ListStepPlot", "[", 
+  RowBox[{
+   RowBox[{"Interpolation", "[", 
+    RowBox[{"Abs", "/@", 
+     RowBox[{"Differences", "[", 
+      RowBox[{"sentenceLengths", ",", "2"}], "]"}]}], "]"}], ",", " ", 
+   RowBox[{
+   "PlotLabel", "\[Rule]", "\"\<Sentence length: Second differences\>\""}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.675460628737446*^9, 3.6754606421081543`*^9}, {
+  3.67546069267409*^9, 3.6754606952781143`*^9}, {3.675460763851698*^9, 
+  3.675460788545982*^9}, {3.6754611859865427`*^9, 3.675461265370802*^9}, {
+  3.675461318851706*^9, 3.675461325616049*^9}, {3.675461709862706*^9, 
+  3.675461752221201*^9}}],
+
+Cell[BoxData["17.705882352941178`"], "Output",
+ CellChangeTimes->{
+  3.675460695693842*^9, {3.675460768601804*^9, 3.675460788851322*^9}, 
+   3.6754612286961107`*^9, 3.675461265863233*^9, 3.675461325926393*^9, {
+   3.675461710576581*^9, 3.675461722872533*^9}, 3.675461960823543*^9, 
+   3.675464225291779*^9, 3.675550907865179*^9, 3.675551320629403*^9, 
+   3.675551612947048*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{}, {}, 
+    {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.019444444444444445`],
+      AbsoluteThickness[1.6], 
+     StyleBox[LineBox[CompressedData["
+1:eJxdkDsKwkAURQcb7RQMKCho4v//6ax8CPbiEgRrt+BCXJPbsLWwstE4986V
+ZCAczpwM85j4dDmeC865JP1+xHpuwbrdPn7J+QPZtrvPRTlYIofsZTlYsXDP
+w/eqHIzoS0OvyXNzOPSGHKtJ3/B8S56dc2Uv32M5mGhO9E5u7m64j70nB/oi
++iC3H94hYh/JwTG5Y5/IwSloB/aZHH1O7tkXcjC849revv898w5Xy+6n/gU9
+3H7o
+       "]],
+      FontFamily->"Arial"]}}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  BaseStyle->{FontFamily -> "Arial"},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotLabel->FormBox[
+   "\"Sentence length: Second differences\"", TraditionalForm],
+  PlotRange->{{0, 18.}, {0, 65.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.675460695693842*^9, {3.675460768601804*^9, 3.675460788851322*^9}, 
+   3.6754612286961107`*^9, 3.675461265863233*^9, 3.675461325926393*^9, {
+   3.675461710576581*^9, 3.675461722872533*^9}, 3.675461960823543*^9, 
+   3.675464225291779*^9, 3.675550907865179*^9, 3.675551320629403*^9, 
+   3.67555161299953*^9}]
+}, Open  ]],
+
+Cell["\<\
+We can also drill down into the individual sentence structure itself\
+\>", "Text",
+ CellChangeTimes->{{3.675463732260844*^9, 3.675463744026148*^9}, {
+  3.675465480202484*^9, 3.675465481798217*^9}, {3.6755509184105797`*^9, 
+  3.6755509208356028`*^9}, {3.675551620185438*^9, 3.675551622093107*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"TextStructure", "[", 
+  RowBox[{"sentences", "[", 
+   RowBox[{"[", "4", "]"}], "]"}], "]"}]], "Input"],
+
+Cell[BoxData[
+ InterpretationBox[
+  TagBox[GridBox[{
+     {
+      InterpretationBox[GridBox[{
+         {
+          TemplateBox[{"\[ThinSpace]","\" \"",InterpretationBox[
+             GridBox[{{
+                TemplateBox[{"\[ThinSpace]", "\" \"", 
+                  InterpretationBox[
+                   GridBox[{{"\"It\""}, {
+                    StyleBox["\"Pronoun\"", "TextElementLabel"]}}, BaseStyle -> 
+                    "TextElementGrid"], 
+                   TextElement["It", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Pronoun"]]]]}, 
+                 "RowWithSeparators"]}, {
+                StyleBox["\"Noun Phrase\"", "TextElementLabel"]}}, BaseStyle -> 
+              "TextElementGrid"], 
+             TextElement[{
+               TextElement["It", 
+                Association[
+                "GrammaticalUnit" -> Entity["GrammaticalUnit", "Pronoun"]]]}, 
+              
+              Association[
+              "GrammaticalUnit" -> Entity["GrammaticalUnit", "NounPhrase"]]]],
+            InterpretationBox[
+             GridBox[{{
+                TemplateBox[{"\[ThinSpace]", "\" \"", 
+                  InterpretationBox[
+                   GridBox[{{"\"is\""}, {
+                    StyleBox["\"Verb\"", "TextElementLabel"]}}, BaseStyle -> 
+                    "TextElementGrid"], 
+                   TextElement["is", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]]], 
+                  InterpretationBox[
+                   GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{"\"then\""}, {
+                    StyleBox["\"Adverb\"", "TextElementLabel"]}}, BaseStyle -> 
+                    "TextElementGrid"], 
+                    TextElement["then", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Adverb"]]]]}, 
+                    "RowWithSeparators"]}, {
+                    StyleBox["\"Adverb Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                   TextElement[{
+                    TextElement["then", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Adverb"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "AdverbPhrase"]]]], 
+                  InterpretationBox[
+                   GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{"\"developed\""}, {
+                    StyleBox["\"Verb\"", "TextElementLabel"]}}, BaseStyle -> 
+                    "TextElementGrid"], 
+                    TextElement["developed", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]]], 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{"\"throughout\""}, {
+                    StyleBox["\"Preposition\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement["throughout", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "Preposition"]]]], 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{"\"the\""}, {
+                    StyleBox["\"Determiner\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement["the", 
+                    Association["GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "Determiner"]]]], 
+                    InterpretationBox[
+                    GridBox[{{"\"play\""}, {
+                    StyleBox["\"Noun\"", "TextElementLabel"]}}, BaseStyle -> 
+                    "TextElementGrid"], 
+                    TextElement["play", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "Noun"]]]]}, "RowWithSeparators"]}, {
+                    StyleBox["\"Noun Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement["the", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "Determiner"]]], 
+                    TextElement["play", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "NounPhrase"]]]], 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{"\"with\""}, {
+                    StyleBox["\"Preposition\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement["with", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "Preposition"]]]], 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{"\"Lady\""}, {
+                    StyleBox["\"Proper Noun\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement["Lady", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "ProperNoun"]]]], 
+                    InterpretationBox[
+                    GridBox[{{"\"Macbeth\""}, {
+                    StyleBox["\"Proper Noun\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "ProperNoun"]]]]}, "RowWithSeparators"]}, {
+                    StyleBox["\"Noun Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement["Lady", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "ProperNoun"]]], 
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "ProperNoun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "NounPhrase"]]]]}, "RowWithSeparators"]}, {
+                    StyleBox[
+                    "\"Prepositional Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement["with", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "Preposition"]]], 
+                    TextElement[{
+                    TextElement["Lady", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "ProperNoun"]]], 
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "ProperNoun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "PrepositionalPhrase"]]]]}, 
+                    "RowWithSeparators"]}, {
+                    StyleBox["\"Noun Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement[{
+                    TextElement["the", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "Determiner"]]], 
+                    TextElement["play", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "NounPhrase"]]], 
+                    TextElement[{
+                    TextElement["with", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["Lady", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "ProperNoun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "NounPhrase"]]]]}, 
+                    "RowWithSeparators"]}, {
+                    StyleBox[
+                    "\"Prepositional Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement["throughout", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement[{
+                    TextElement["the", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "Determiner"]]], 
+                    TextElement["play", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "NounPhrase"]]], 
+                    TextElement[{
+                    TextElement["with", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["Lady", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "ProperNoun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]]}, 
+                    "RowWithSeparators"]}, {
+                    StyleBox["\"Verb Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement["developed", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]], 
+                    
+                    TextElement[{
+                    TextElement["throughout", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement[{
+                    TextElement["the", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]], 
+                    TextElement["play", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]], 
+                    TextElement[{
+                    TextElement["with", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["Lady", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "VerbPhrase"]]]], 
+                    InterpretationBox[
+                    GridBox[{{"\",\""}, {
+                    StyleBox["\"Punctuation\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[",", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Punctuation"]]]], 
+                    InterpretationBox[
+                    GridBox[{{"\"and\""}, {
+                    StyleBox["\"Conjunction\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement["and", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Conjunction"]]]], 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{"\"brutally\""}, {
+                    StyleBox["\"Adverb\"", "TextElementLabel"]}}, BaseStyle -> 
+                    "TextElementGrid"], 
+                    TextElement["brutally", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Adverb"]]]]}, 
+                    "RowWithSeparators"]}, {
+                    StyleBox["\"Adverb Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement["brutally", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Adverb"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "AdverbPhrase"]]]], 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{"\"resolved\""}, {
+                    StyleBox["\"Verb\"", "TextElementLabel"]}}, BaseStyle -> 
+                    "TextElementGrid"], 
+                    TextElement["resolved", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]]], 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{"\"in\""}, {
+                    StyleBox["\"Preposition\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement["in", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "Preposition"]]]], 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{"\"Act\""}, {
+                    StyleBox["\"Proper Noun\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement["Act", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "ProperNoun"]]]], 
+                    InterpretationBox[
+                    GridBox[{{"\"5\""}, {
+                    StyleBox["\"Numeral\"", "TextElementLabel"]}}, BaseStyle -> 
+                    "TextElementGrid"], 
+                    TextElement["5", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "Numeral"]]]]}, "RowWithSeparators"]}, {
+                    StyleBox["\"Noun Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement["Act", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["5", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "Numeral"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "NounPhrase"]]]]}, 
+                    "RowWithSeparators"]}, {
+                    StyleBox[
+                    "\"Prepositional Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement["in", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["Act", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["5", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Numeral"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]], 
+                    InterpretationBox[
+                    GridBox[{{"\",\""}, {
+                    StyleBox["\"Punctuation\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[",", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Punctuation"]]]], 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{"\"with\""}, {
+                    StyleBox["\"Preposition\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement["with", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "Preposition"]]]], 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{"\"Macbeth\""}, {
+                    StyleBox["\"Proper Noun\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "ProperNoun"]]]], 
+                    InterpretationBox[
+                    GridBox[{{"\"'s\""}, {
+                    StyleBox[
+                    RowBox[{"Missing", "[", 
+                    RowBox[{"\"KeyAbsent\"", ",", "Nothing"}], "]"}], 
+                    "TextElementLabel"]}}, BaseStyle -> "TextElementGrid"], 
+                    TextElement["'s", 
+                    Association["GrammaticalUnit" -> Nothing]]]}, 
+                    "RowWithSeparators"]}, {
+                    StyleBox["\"Noun Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "ProperNoun"]]], 
+                    TextElement["'s", 
+                    Association["GrammaticalUnit" -> Nothing]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "NounPhrase"]]]], 
+                    InterpretationBox[
+                    GridBox[{{"\"head\""}, {
+                    StyleBox["\"Noun\"", "TextElementLabel"]}}, BaseStyle -> 
+                    "TextElementGrid"], 
+                    TextElement["head", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "Noun"]]]]}, "RowWithSeparators"]}, {
+                    StyleBox["\"Noun Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement[{
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "ProperNoun"]]], 
+                    TextElement["'s", 
+                    Association["GrammaticalUnit" -> Nothing]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "NounPhrase"]]], 
+                    TextElement["head", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "NounPhrase"]]]], 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{"\"on\""}, {
+                    StyleBox["\"Preposition\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement["on", 
+                    Association["GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "Preposition"]]]], 
+                    InterpretationBox[
+                    GridBox[{{
+                    TemplateBox[{"\[ThinSpace]", "\" \"", 
+                    InterpretationBox[
+                    GridBox[{{"\"a\""}, {
+                    StyleBox["\"Determiner\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement["a", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "Determiner"]]]], 
+                    InterpretationBox[
+                    GridBox[{{"\"stake\""}, {
+                    StyleBox["\"Noun\"", "TextElementLabel"]}}, BaseStyle -> 
+                    "TextElementGrid"], 
+                    TextElement["stake", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "Noun"]]]]}, "RowWithSeparators"]}, {
+                    StyleBox["\"Noun Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement["a", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "Determiner"]]], 
+                    TextElement["stake", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "NounPhrase"]]]]}, "RowWithSeparators"]}, {
+                    StyleBox[
+                    "\"Prepositional Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement["on", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "Preposition"]]], 
+                    TextElement[{
+                    TextElement["a", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "Determiner"]]], 
+                    TextElement["stake", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", 
+                    "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "PrepositionalPhrase"]]]]}, 
+                    "RowWithSeparators"]}, {
+                    StyleBox["\"Noun Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement[{
+                    TextElement[{
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["'s", 
+                    Association["GrammaticalUnit" -> Nothing]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "NounPhrase"]]], 
+                    TextElement["head", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "NounPhrase"]]], 
+                    TextElement[{
+                    TextElement["on", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["a", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "Determiner"]]], 
+                    TextElement["stake", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "NounPhrase"]]]]}, 
+                    "RowWithSeparators"]}, {
+                    StyleBox[
+                    "\"Prepositional Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement["with", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement[{
+                    TextElement[{
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["'s", 
+                    Association["GrammaticalUnit" -> Nothing]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "NounPhrase"]]], 
+                    TextElement["head", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]], 
+                    TextElement[{
+                    TextElement["on", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["a", 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "Determiner"]]], 
+                    TextElement["stake", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> Entity[
+                    "GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]]}, 
+                    "RowWithSeparators"]}, {
+                    StyleBox["\"Verb Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                    TextElement[{
+                    TextElement["resolved", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]], 
+                    
+                    TextElement[{
+                    TextElement["in", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["Act", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["5", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Numeral"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]], 
+                    TextElement[",", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Punctuation"]]], 
+                    TextElement[{
+                    TextElement["with", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement[{
+                    TextElement[{
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["'s", 
+                    Association["GrammaticalUnit" -> Nothing]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]], 
+                    TextElement["head", 
+                    Association["GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]], 
+                    TextElement[{
+                    TextElement["on", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["a", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]], 
+                    TextElement["stake", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "VerbPhrase"]]]]}, 
+                    "RowWithSeparators"]}, {
+                    StyleBox["\"Verb Phrase\"", "TextElementLabel"]}}, 
+                    BaseStyle -> "TextElementGrid"], 
+                   TextElement[{
+                    TextElement[{
+                    TextElement["developed", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]], 
+                    
+                    TextElement[{
+                    TextElement["throughout", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement[{
+                    TextElement["the", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]], 
+                    TextElement["play", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]], 
+                    TextElement[{
+                    TextElement["with", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["Lady", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "VerbPhrase"]]], 
+                    TextElement[",", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Punctuation"]]], 
+                    TextElement["and", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Conjunction"]]], 
+                    TextElement[{
+                    TextElement["brutally", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Adverb"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "AdverbPhrase"]]], 
+                    TextElement[{
+                    TextElement["resolved", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]], 
+                    
+                    TextElement[{
+                    TextElement["in", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["Act", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["5", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Numeral"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]], 
+                    TextElement[",", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Punctuation"]]], 
+                    TextElement[{
+                    TextElement["with", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement[{
+                    TextElement[{
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["'s", 
+                    Association["GrammaticalUnit" -> Nothing]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]], 
+                    TextElement["head", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]], 
+                    TextElement[{
+                    TextElement["on", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["a", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]], 
+                    TextElement["stake", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "VerbPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "VerbPhrase"]]]]}, 
+                 "RowWithSeparators"]}, {
+                StyleBox["\"Verb Phrase\"", "TextElementLabel"]}}, BaseStyle -> 
+              "TextElementGrid"], 
+             TextElement[{
+               TextElement["is", 
+                Association[
+                "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]], 
+               TextElement[{
+                 TextElement["then", 
+                  Association[
+                  "GrammaticalUnit" -> Entity["GrammaticalUnit", "Adverb"]]]}, 
+                Association[
+                "GrammaticalUnit" -> 
+                 Entity["GrammaticalUnit", "AdverbPhrase"]]], 
+               TextElement[{
+                 TextElement[{
+                   TextElement["developed", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]], 
+                   
+                   TextElement[{
+                    TextElement["throughout", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement[{
+                    TextElement["the", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]], 
+                    TextElement["play", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]], 
+                    TextElement[{
+                    TextElement["with", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["Lady", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                  Association[
+                  "GrammaticalUnit" -> 
+                   Entity["GrammaticalUnit", "VerbPhrase"]]], 
+                 TextElement[",", 
+                  Association[
+                  "GrammaticalUnit" -> 
+                   Entity["GrammaticalUnit", "Punctuation"]]], 
+                 TextElement["and", 
+                  Association[
+                  "GrammaticalUnit" -> 
+                   Entity["GrammaticalUnit", "Conjunction"]]], 
+                 TextElement[{
+                   TextElement["brutally", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Adverb"]]]}, 
+                  Association[
+                  "GrammaticalUnit" -> 
+                   Entity["GrammaticalUnit", "AdverbPhrase"]]], 
+                 TextElement[{
+                   TextElement["resolved", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]], 
+                   
+                   TextElement[{
+                    TextElement["in", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["Act", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["5", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Numeral"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]], 
+                   TextElement[",", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Punctuation"]]], 
+                   TextElement[{
+                    TextElement["with", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement[{
+                    TextElement[{
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["'s", 
+                    Association["GrammaticalUnit" -> Nothing]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]], 
+                    TextElement["head", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]], 
+                    TextElement[{
+                    TextElement["on", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["a", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]], 
+                    TextElement["stake", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                  Association[
+                  "GrammaticalUnit" -> 
+                   Entity["GrammaticalUnit", "VerbPhrase"]]]}, 
+                Association[
+                "GrammaticalUnit" -> 
+                 Entity["GrammaticalUnit", "VerbPhrase"]]]}, 
+              Association[
+              "GrammaticalUnit" -> Entity["GrammaticalUnit", "VerbPhrase"]]]],
+            InterpretationBox[
+             GridBox[{{"\".\""}, {
+                StyleBox["\"Punctuation\"", "TextElementLabel"]}}, BaseStyle -> 
+              "TextElementGrid"], 
+             TextElement[".", 
+              Association[
+              "GrammaticalUnit" -> 
+               Entity["GrammaticalUnit", "Punctuation"]]]]},
+           "RowWithSeparators"]},
+         {
+          StyleBox["\<\"Sentence\"\>", "TextElementLabel"]}
+        },
+        BaseStyle->"TextElementGrid"],
+       TextElement[{
+         TextElement[{
+           TextElement["It", 
+            Association[
+            "GrammaticalUnit" -> Entity["GrammaticalUnit", "Pronoun"]]]}, 
+          Association[
+          "GrammaticalUnit" -> Entity["GrammaticalUnit", "NounPhrase"]]], 
+         TextElement[{
+           TextElement["is", 
+            Association[
+            "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]], 
+           TextElement[{
+             TextElement["then", 
+              Association[
+              "GrammaticalUnit" -> Entity["GrammaticalUnit", "Adverb"]]]}, 
+            Association[
+            "GrammaticalUnit" -> Entity["GrammaticalUnit", "AdverbPhrase"]]], 
+           
+           TextElement[{
+             TextElement[{
+               TextElement["developed", 
+                Association[
+                "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]], 
+               TextElement[{
+                 TextElement["throughout", 
+                  Association[
+                  "GrammaticalUnit" -> 
+                   Entity["GrammaticalUnit", "Preposition"]]], 
+                 TextElement[{
+                   TextElement[{
+                    TextElement["the", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]], 
+                    TextElement["play", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]], 
+                   TextElement[{
+                    TextElement["with", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["Lady", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                  Association[
+                  "GrammaticalUnit" -> 
+                   Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                Association[
+                "GrammaticalUnit" -> 
+                 Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+              Association[
+              "GrammaticalUnit" -> Entity["GrammaticalUnit", "VerbPhrase"]]], 
+             
+             TextElement[",", 
+              Association[
+              "GrammaticalUnit" -> Entity["GrammaticalUnit", "Punctuation"]]], 
+             TextElement["and", 
+              Association[
+              "GrammaticalUnit" -> Entity["GrammaticalUnit", "Conjunction"]]], 
+             TextElement[{
+               TextElement["brutally", 
+                Association[
+                "GrammaticalUnit" -> Entity["GrammaticalUnit", "Adverb"]]]}, 
+              Association[
+              "GrammaticalUnit" -> 
+               Entity["GrammaticalUnit", "AdverbPhrase"]]], 
+             TextElement[{
+               TextElement["resolved", 
+                Association[
+                "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]], 
+               TextElement[{
+                 TextElement["in", 
+                  Association[
+                  "GrammaticalUnit" -> 
+                   Entity["GrammaticalUnit", "Preposition"]]], 
+                 TextElement[{
+                   TextElement["Act", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]], 
+                   TextElement["5", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Numeral"]]]}, 
+                  Association[
+                  "GrammaticalUnit" -> 
+                   Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                Association[
+                "GrammaticalUnit" -> 
+                 Entity["GrammaticalUnit", "PrepositionalPhrase"]]], 
+               TextElement[",", 
+                Association[
+                "GrammaticalUnit" -> 
+                 Entity["GrammaticalUnit", "Punctuation"]]], 
+               TextElement[{
+                 TextElement["with", 
+                  Association[
+                  "GrammaticalUnit" -> 
+                   Entity["GrammaticalUnit", "Preposition"]]], 
+                 TextElement[{
+                   TextElement[{
+                    TextElement[{
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["'s", 
+                    Association["GrammaticalUnit" -> Nothing]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]], 
+                    TextElement["head", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]], 
+                   TextElement[{
+                    TextElement["on", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                    TextElement[{
+                    TextElement["a", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]], 
+                    TextElement["stake", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+                  Association[
+                  "GrammaticalUnit" -> 
+                   Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                Association[
+                "GrammaticalUnit" -> 
+                 Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+              Association[
+              "GrammaticalUnit" -> Entity["GrammaticalUnit", "VerbPhrase"]]]}, 
+            Association[
+            "GrammaticalUnit" -> Entity["GrammaticalUnit", "VerbPhrase"]]]}, 
+          Association[
+          "GrammaticalUnit" -> Entity["GrammaticalUnit", "VerbPhrase"]]], 
+         TextElement[".", 
+          Association[
+          "GrammaticalUnit" -> Entity["GrammaticalUnit", "Punctuation"]]]}, 
+        Association[
+        "GrammaticalUnit" -> Entity["GrammaticalUnit", "Sentence"]]]]}
+    },
+    DefaultBaseStyle->"Column",
+    GridBoxAlignment->{"Columns" -> {{Left}}},
+    GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+   "Column"],
+  TextElement[{
+    TextElement[{
+      TextElement[{
+        TextElement["It", 
+         Association[
+         "GrammaticalUnit" -> Entity["GrammaticalUnit", "Pronoun"]]]}, 
+       Association[
+       "GrammaticalUnit" -> Entity["GrammaticalUnit", "NounPhrase"]]], 
+      TextElement[{
+        TextElement["is", 
+         Association["GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]], 
+        TextElement[{
+          TextElement["then", 
+           Association[
+           "GrammaticalUnit" -> Entity["GrammaticalUnit", "Adverb"]]]}, 
+         Association[
+         "GrammaticalUnit" -> Entity["GrammaticalUnit", "AdverbPhrase"]]], 
+        TextElement[{
+          TextElement[{
+            TextElement["developed", 
+             Association[
+             "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]], 
+            TextElement[{
+              TextElement["throughout", 
+               Association[
+               "GrammaticalUnit" -> 
+                Entity["GrammaticalUnit", "Preposition"]]], 
+              TextElement[{
+                TextElement[{
+                  TextElement["the", 
+                   Association[
+                   "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]], 
+                  TextElement["play", 
+                   Association[
+                   "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                 
+                 Association[
+                 "GrammaticalUnit" -> 
+                  Entity["GrammaticalUnit", "NounPhrase"]]], 
+                TextElement[{
+                  TextElement["with", 
+                   Association[
+                   "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                  TextElement[{
+                    TextElement["Lady", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]]}, 
+                   Association[
+                   "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                 Association[
+                 "GrammaticalUnit" -> 
+                  Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+               Association[
+               "GrammaticalUnit" -> 
+                Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+             Association[
+             "GrammaticalUnit" -> 
+              Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+           Association[
+           "GrammaticalUnit" -> Entity["GrammaticalUnit", "VerbPhrase"]]], 
+          TextElement[",", 
+           Association[
+           "GrammaticalUnit" -> Entity["GrammaticalUnit", "Punctuation"]]], 
+          TextElement["and", 
+           Association[
+           "GrammaticalUnit" -> Entity["GrammaticalUnit", "Conjunction"]]], 
+          TextElement[{
+            TextElement["brutally", 
+             Association[
+             "GrammaticalUnit" -> Entity["GrammaticalUnit", "Adverb"]]]}, 
+           Association[
+           "GrammaticalUnit" -> Entity["GrammaticalUnit", "AdverbPhrase"]]], 
+          TextElement[{
+            TextElement["resolved", 
+             Association[
+             "GrammaticalUnit" -> Entity["GrammaticalUnit", "Verb"]]], 
+            TextElement[{
+              TextElement["in", 
+               Association[
+               "GrammaticalUnit" -> 
+                Entity["GrammaticalUnit", "Preposition"]]], 
+              TextElement[{
+                TextElement["Act", 
+                 Association[
+                 "GrammaticalUnit" -> 
+                  Entity["GrammaticalUnit", "ProperNoun"]]], 
+                TextElement["5", 
+                 Association[
+                 "GrammaticalUnit" -> Entity["GrammaticalUnit", "Numeral"]]]}, 
+               Association[
+               "GrammaticalUnit" -> 
+                Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+             Association[
+             "GrammaticalUnit" -> 
+              Entity["GrammaticalUnit", "PrepositionalPhrase"]]], 
+            TextElement[",", 
+             Association[
+             "GrammaticalUnit" -> Entity["GrammaticalUnit", "Punctuation"]]], 
+            
+            TextElement[{
+              TextElement["with", 
+               Association[
+               "GrammaticalUnit" -> 
+                Entity["GrammaticalUnit", "Preposition"]]], 
+              TextElement[{
+                TextElement[{
+                  TextElement[{
+                    TextElement["Macbeth", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "ProperNoun"]]], 
+                    TextElement["'s", 
+                    Association["GrammaticalUnit" -> Nothing]]}, 
+                   Association[
+                   "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]], 
+                  TextElement["head", 
+                   Association[
+                   "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                 
+                 Association[
+                 "GrammaticalUnit" -> 
+                  Entity["GrammaticalUnit", "NounPhrase"]]], 
+                TextElement[{
+                  TextElement["on", 
+                   Association[
+                   "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Preposition"]]], 
+                  TextElement[{
+                    TextElement["a", 
+                    Association[
+                    "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "Determiner"]]], 
+                    TextElement["stake", 
+                    Association[
+                    "GrammaticalUnit" -> Entity["GrammaticalUnit", "Noun"]]]}, 
+                   Association[
+                   "GrammaticalUnit" -> 
+                    Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+                 Association[
+                 "GrammaticalUnit" -> 
+                  Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+               Association[
+               "GrammaticalUnit" -> 
+                Entity["GrammaticalUnit", "NounPhrase"]]]}, 
+             Association[
+             "GrammaticalUnit" -> 
+              Entity["GrammaticalUnit", "PrepositionalPhrase"]]]}, 
+           Association[
+           "GrammaticalUnit" -> Entity["GrammaticalUnit", "VerbPhrase"]]]}, 
+         Association[
+         "GrammaticalUnit" -> Entity["GrammaticalUnit", "VerbPhrase"]]]}, 
+       Association[
+       "GrammaticalUnit" -> Entity["GrammaticalUnit", "VerbPhrase"]]], 
+      TextElement[".", 
+       Association[
+       "GrammaticalUnit" -> Entity["GrammaticalUnit", "Punctuation"]]]}, 
+     Association[
+     "GrammaticalUnit" -> 
+      Entity["GrammaticalUnit", "Sentence"]]]}]]], "Output",
+ CellChangeTimes->{3.6754637235684443`*^9, 3.675550931724766*^9, 
+  3.675551338106571*^9, 3.675551624775271*^9}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.675727273336359*^9, 3.675727275487906*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["corpus"], "Input",
+ CellChangeTimes->{{3.6778976159491673`*^9, 3.6778976216277122`*^9}}],
+
+Cell[BoxData["corpus"], "Output",
+ CellChangeTimes->{3.677897623299264*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["sentenceLengths"], "Input",
+ CellChangeTimes->{{3.67789833457998*^9, 3.677898335935124*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "14", ",", "18", ",", "16", ",", "22", ",", "16", ",", "11", ",", "22", ",",
+    "33", ",", "19", ",", "22", ",", "21", ",", "22", ",", "12", ",", "7", 
+   ",", "38", ",", "4", ",", "12", ",", "38", ",", "31"}], "}"}]], "Output",
+ CellChangeTimes->{3.6778983364033527`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Overlay", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Histogram", "[", "sentenceLengths", "]"}], ",", 
+    RowBox[{"SmoothHistogram", "[", 
+     RowBox[{"sentenceLengths", ",", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "50"}], "}"}], ",", "All"}], "}"}]}]}], "]"}]}], 
+   "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.6778983518702106`*^9, 3.6778983839607363`*^9}, {
+  3.677898416707028*^9, 3.677898449589354*^9}, {3.677898501507022*^9, 
+  3.6778985576922913`*^9}, {3.677898656965207*^9, 3.677898690458613*^9}}],
+
+Cell[BoxData[
+ OverlayBox[{
+  GraphicsBox[{
+    {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{
+     Opacity[0.6579999999999999], Thickness[Small]}], {}, 
+     {RGBColor[0.987148, 0.8073604000000001, 0.49470040000000004`], EdgeForm[{
+      Opacity[0.6579999999999999], Thickness[Small]}], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{0., 0}, {10., 2}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{15.465772618094478`, 99.91293034427544}, {
+           44.84142524359087, 95.60230332939004}}],
+         StatusArea[#, 2]& ,
+         TagBoxNote->"2"],
+        StyleBox["2", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[2, {}], "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{10., 0}, {20., 8}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{99.41293034427544, 
+           183.8600880704564}, {-105.94120901380664`, 95.60230332939004}}],
+         StatusArea[#, 8]& ,
+         TagBoxNote->"8"],
+        StyleBox["8", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[8, {}], "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{20., 0}, {30., 5}, "RoundingRadius" -> 0]},
+          ImageSizeCache->{{183.3600880704564, 
+           267.80724579663735`}, {-30.549891885107883`, 95.60230332939004}}],
+         StatusArea[#, 5]& ,
+         TagBoxNote->"5"],
+        StyleBox["5", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[5, {}], "Tooltip"]& ], 
+      TagBox[
+       TooltipBox[
+        TagBox[
+         DynamicBox[{
+           FEPrivate`If[
+            CurrentValue["MouseOver"], 
+            EdgeForm[{
+              GrayLevel[0.5], 
+              AbsoluteThickness[1.5], 
+              Opacity[0.66]}], {}, {}], 
+           RectangleBox[{30., 0}, {40., 4}, "RoundingRadius" -> 0]},
+          
+          ImageSizeCache->{{267.30724579663735`, 
+           351.75440352281834`}, {-5.419452842208301, 95.60230332939004}}],
+         StatusArea[#, 4]& ,
+         TagBoxNote->"4"],
+        StyleBox["4", {}, StripOnInput -> False]],
+       Annotation[#, 
+        Style[4, {}], "Tooltip"]& ]}, {}, {}}, {{}, {}, {}, {}}},
+   AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+   Axes->{True, True},
+   AxesLabel->{None, None},
+   AxesOrigin->{-0.8, 0},
+   BaseStyle->{FontFamily -> "Arial"},
+   FrameLabel->{{None, None}, {None, None}},
+   FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+   GridLines->{None, None},
+   GridLinesStyle->Directive[
+     GrayLevel[0.5, 0.4]],
+   PlotRange->{{0., 40.}, {All, All}},
+   PlotRangePadding->{{
+      Scaled[0.02], 
+      Scaled[0.02]}, {
+      Scaled[0.02], 
+      Scaled[0.05]}},
+   Ticks->{Automatic, Automatic}], 
+  GraphicsBox[{{}, {{}, {}, 
+     {RGBColor[0.368417, 0.506779, 0.709798], PointSize[0.008333333333333333],
+       AbsoluteThickness[1.6], 
+      StyleBox[LineBox[CompressedData["
+1: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
+RGz2//l/AJEE+/8=
+        "]],
+       FontFamily->"Arial"]}}, {}},
+   AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+   Axes->{True, True},
+   AxesLabel->{None, None},
+   AxesOrigin->{0, 0},
+   BaseStyle->{FontFamily -> "Arial"},
+   DisplayFunction->Identity,
+   Frame->{{False, False}, {False, False}},
+   FrameLabel->{{None, None}, {None, None}},
+   FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+   GridLines->{None, None},
+   GridLinesStyle->Directive[
+     GrayLevel[0.5, 0.4]],
+   ImagePadding->All,
+   Method->{"CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+         (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+          Part[#, 1]], 
+         (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+          Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+         (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+          Part[#, 1]], 
+         (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+          Part[#, 2]]}& )}},
+   PlotRange->{{0, 50}, {0, 0.045249423871141586`}},
+   PlotRangeClipping->True,
+   PlotRangePadding->{{0, 0}, {
+      Scaled[0.02], 
+      Scaled[0.02]}},
+   Ticks->{Automatic, Automatic}]}]], "Output",
+ CellChangeTimes->{{3.677898355963779*^9, 3.6778983848102837`*^9}, {
+  3.677898430091856*^9, 3.677898450379182*^9}, {3.677898503683014*^9, 
+  3.6778985208613787`*^9}, {3.6778986820869827`*^9, 3.677898690864814*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["tCells"], "Input",
+ CellChangeTimes->{{3.6778987844128647`*^9, 3.677898785703227*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  InterpretationBox[Cell["Number of words: 377", "Text"],
+   TextCell["Number of words: 377", "Text"]], "}"}]], "Output",
+ CellChangeTimes->{3.67789878696669*^9}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{Full, Full},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+PrintingCopies->1,
+PrintingPageRange->{1, Automatic},
+FrontEndVersion->"10.4 for Mac OS X x86 (32-bit, 64-bit Kernel) (April 11, \
+2016)",
+StyleDefinitions->FrontEnd`FileName[{"Report"}, "StandardReport.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 117, 1, 30, "Text"],
+Cell[678, 23, 8383, 190, 887, "Input"],
+Cell[CellGroupData[{
+Cell[9086, 217, 96, 1, 37, "Input"],
+Cell[9185, 220, 246, 5, 50, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[9468, 230, 96, 1, 32, "Subsection"],
+Cell[CellGroupData[{
+Cell[9589, 235, 4159, 103, 394, "Input"],
+Cell[13751, 340, 1018, 15, 42, "Output"],
+Cell[14772, 357, 1037, 15, 42, "Output"],
+Cell[15812, 374, 1019, 15, 42, "Output"],
+Cell[16834, 391, 1059, 15, 42, "Output"],
+Cell[17896, 408, 1043, 15, 42, "Output"],
+Cell[18942, 425, 2050, 36, 55, "Output"],
+Cell[20995, 463, 1035, 15, 42, "Output"],
+Cell[22033, 480, 1037, 15, 42, "Output"],
+Cell[23073, 497, 1592, 27, 37, "Output"],
+Cell[24668, 526, 4325, 110, 269, "Output"],
+Cell[28996, 638, 2632, 56, 276, "Output"]
+}, Open  ]],
+Cell[31643, 697, 309, 5, 49, "Text"],
+Cell[CellGroupData[{
+Cell[31977, 706, 439, 6, 37, "Input"],
+Cell[32419, 714, 741, 15, 37, "Output"]
+}, Open  ]],
+Cell[33175, 732, 559, 12, 30, "Text"],
+Cell[CellGroupData[{
+Cell[33759, 748, 220, 3, 37, "Input"],
+Cell[33982, 753, 380, 5, 22, "Print"],
+Cell[34365, 760, 357, 5, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34759, 770, 389, 10, 37, "Input"],
+Cell[35151, 782, 224, 3, 22, "Print"],
+Cell[35378, 787, 1319, 26, 55, "Output"]
+}, Open  ]],
+Cell[36712, 816, 161, 3, 30, "Text"],
+Cell[36876, 821, 258, 5, 30, "Text"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37171, 831, 105, 1, 32, "Subsection"],
+Cell[37279, 834, 191, 2, 30, "Text"],
+Cell[CellGroupData[{
+Cell[37495, 840, 670, 15, 55, "Input"],
+Cell[38168, 857, 3805, 103, 269, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42010, 965, 457, 9, 37, "Input"],
+Cell[42470, 976, 2152, 49, 276, "Output"]
+}, Open  ]],
+Cell[44637, 1028, 422, 7, 49, "Text"],
+Cell[CellGroupData[{
+Cell[45084, 1039, 838, 20, 55, "Input"],
+Cell[45925, 1061, 377, 6, 37, "Output"],
+Cell[46305, 1069, 2054, 49, 270, "Output"]
+}, Open  ]],
+Cell[48374, 1121, 306, 5, 30, "Text"],
+Cell[CellGroupData[{
+Cell[48705, 1130, 126, 3, 37, "Input"],
+Cell[48834, 1135, 65446, 1442, 216, "Output"]
+}, Open  ]],
+Cell[114295, 2580, 92, 1, 37, "Input"],
+Cell[CellGroupData[{
+Cell[114412, 2585, 102, 1, 37, "Input"],
+Cell[114517, 2588, 75, 1, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[114629, 2594, 106, 1, 37, "Input"],
+Cell[114738, 2597, 315, 6, 37, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[115090, 2608, 625, 15, 37, "Input"],
+Cell[115718, 2625, 19785, 377, 253, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[135540, 3007, 100, 1, 37, "Input"],
+Cell[135643, 3010, 191, 4, 79, "Output"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
